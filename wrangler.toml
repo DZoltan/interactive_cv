@@ -1,0 +1,6 @@
+name = "interactive-cv"
+compatibility_date = "2026-09-11"
+
+[assets]
+directory = "./dist/sajat-oldal/browser"
+not_found_handling = "single-page-application"
