@@ -1,0 +1,35 @@
+<main class="flex min-h-screen flex-col items-center justify-center">
+  <div class="terminal">
+    <div class="terminal-nav">
+      <div class="terminal-nav-top">
+        <span class="terminal-nav-title">zltnd@backend-dev: ~</span>
+      </div>
+      <div class="terminal-nav-bottom">
+        @for (section of sections; track section.id) {
+          <button
+            class="terminal-nav-btn"
+            type="button"
+            (click)="selectSection(section)"
+          >{{ section.label }}</button>
+        }
+      </div>
+    </div>
+    <div class="terminal-body">
+      @for (entry of history(); track $index) {
+        @if (entry.type === 'command') {
+          <p class="terminal-line"><span class="terminal-prompt"><span class="terminal-prompt-user">zltnd@backend-dev</span>:<span class="terminal-prompt-path">~</span>$</span> {{ entry.text }}</p>
+        } @else {
+          <p class="terminal-line">{{ entry.text }}</p>
+        }
+      }
+      @if (typingLine() !== null) {
+        <p class="terminal-line"><span class="terminal-prompt"><span class="terminal-prompt-user">zltnd@backend-dev</span>:<span class="terminal-prompt-path">~</span>$</span> {{ typingLine() }}<span class="terminal-cursor">_</span></p>
+      } @else {
+        <p class="terminal-line">
+          <span class="terminal-prompt"><span class="terminal-prompt-user">zltnd@backend-dev</span>:<span class="terminal-prompt-path">~</span>$</span>
+          <span class="terminal-cursor">_</span>
+        </p>
+      }
+    </div>
+  </div>
+</main>
